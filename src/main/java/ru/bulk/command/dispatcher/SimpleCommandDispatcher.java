@@ -1,0 +1,23 @@
+package ru.bulk.command.dispatcher;
+
+import ru.bulk.command.Command;
+import ru.bulk.command.manager.CommandManager;
+
+import java.util.List;
+
+public class SimpleCommandDispatcher<S, T> extends AbstractCommandDispatcher<S, T> {
+
+    public SimpleCommandDispatcher(CommandManager<S, T> commandManager) {
+        super(commandManager);
+    }
+
+    public SimpleCommandDispatcher() {
+        super();
+    }
+
+    @Override
+    public void post(Command<S, T> command, S sender, List<String> args) {
+        command.execute(sender, args);
+    }
+
+}
